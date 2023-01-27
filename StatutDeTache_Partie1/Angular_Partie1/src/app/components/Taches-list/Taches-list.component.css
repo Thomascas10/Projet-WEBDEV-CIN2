@@ -1,0 +1,60 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.btn.btn-outline-secondary.m-1{
+  color:rgb(255, 123, 0);
+  border-color: rgb(255, 123, 0);
+}
+
+.btn.btn-outline-secondary.e{
+  color:red;
+  border-color: red;
+  margin-left : 25px;
+}
+
+#scales{
+  margin-right: 10px;
+}
+
+#buttonAjoutTache{
+  display: flex;
+  justify-content: right;
+  margin : 15px 0 15px 5%;
+}
+
+.list.row{
+  margin :auto;
+  justify-content: center;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+.col-md-6{
+  display : inline;
+  font-display: center;
+  max-width: 400px;
+}
+
+.x4_column{
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-8{
+  margin-bottom: 25px;
+}
+
+.Titre_Taches{
+  max-width: 300px;
+}
+
+.Partie2{
+    text-decoration: underline;
+    margin-bottom: 50px;
+    font-size: 40px;
+}
+
+

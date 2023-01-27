@@ -1,0 +1,146 @@
+<div class="list row">
+  <div class="Partie2">Ajout d'une tache - Partie 1</div>
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nom de la Tache"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-primary"
+          (click)="searchTitle()"
+        >
+          Chercher
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="x4_column">
+  <div class="col-md-6">
+    <div class="Titre_Taches"><h1>Liste de Taches "Non défini"</h1></div>
+    <button id="buttonAjoutTache" routerLink="../add" class="btn btn-primary" value="Ajouter">Ajouter une tache</button>
+    <ul class="list-group">
+      <div
+        *ngFor="let Tache of Taches; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTache(Tache, i)"
+      >
+        <li *ngIf="Tache.published == 'undefined' " class="list-group-item">
+          <input type="checkbox" id="scales" name="scales" checked>
+            {{ Tache.title }}
+          <button class="btn btn-outline-secondary e" (click)="deleteTache(Tache.id)">Supprimer</button>
+        </li>
+      </div>
+    </ul>
+    <br>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="col-md-6">
+    <div class="Titre_Taches"><h1>Liste de Taches "En cours"</h1></div>
+    <button id="buttonAjoutTache" routerLink="../add" class="btn btn-primary" value="Ajouter">Ajouter une tache</button>
+    <ul class="list-group">
+      <div
+        *ngFor="let Tache of Taches; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTache(Tache, i)"
+      >
+        <li *ngIf="Tache.published == 'undergoing' " class="list-group-item">
+          <input type="checkbox" id="scales" name="scales" checked>
+          {{ Tache.title }}
+          <button class="btn btn-outline-secondary e" (click)="deleteTache(Tache.id)">Supprimer</button>
+        </li>
+      </div>
+    </ul>
+    <br>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="col-md-6">
+    <div class="Titre_Taches"><h1>Liste de Taches "En Attente"</h1></div>
+    <button id="buttonAjoutTache" routerLink="../add" class="btn btn-primary" value="Ajouter">Ajouter une tache</button>
+    <ul class="list-group">
+      <div
+        *ngFor="let Tache of Taches; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTache(Tache, i)"
+      >
+        <li *ngIf="Tache.published == 'pending' " class="list-group-item">
+          <input type="checkbox" id="scales" name="scales" checked>
+          {{ Tache.title }}
+          <button class="btn btn-outline-secondary e" (click)="deleteTache(Tache.id)">Supprimer</button>
+        </li>
+      </div>
+    </ul>
+    <br>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="col-md-6">
+    <div class="Titre_Taches"><h1>Liste de Taches "Terminées"</h1></div>
+    <button id="buttonAjoutTache" routerLink="../add" class="btn btn-primary" value="Ajouter">Ajouter une tache</button>
+    <ul class="list-group">
+      <div
+        *ngFor="let Tache of Taches; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTache(Tache, i)"
+      >
+        <li *ngIf="Tache.published == 'done' " class="list-group-item">
+          <input type="checkbox" id="scales" name="scales" checked>
+          {{ Tache.title }}
+          <button class="btn btn-outline-secondary e" (click)="deleteTache(Tache.id)">Supprimer</button>
+        </li>
+      </div>
+    </ul>
+    <br>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="Fenetre_Edit">
+  <button class="btn btn-outline-secondary m-1" (click)="removeAllTaches()">
+    Toutes les Supprimer
+  </button>
+  <div class="col-md-6">
+    <app-Tache-details
+      [viewMode]="true"
+      [currentTache]="currentTache"
+    ></app-Tache-details>
+  </div>
+  <div class="col-md-6">
+    <app-test
+    ></app-test>
+</div>
+</div>

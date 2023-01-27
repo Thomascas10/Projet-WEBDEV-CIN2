@@ -1,0 +1,122 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentTache.id">
+    <h4>Tache</h4>
+    <div>
+      <label><strong>Titre:</strong></label> {{ currentTache.title }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ currentTache.description }}
+    </div>
+    <div>
+      <label><strong>Status:</strong></label>
+      {{ currentTache.published }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/Taches/{{ currentTache.id }}"
+    >
+      Editer
+    </a>
+  </div>
+
+  <div *ngIf="!currentTache">
+    <br />
+    <p>Merci de cliquer sur une Tache...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentTache.id" class="edit-form">
+    <h4>Tache</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentTache.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentTache.description"
+          name="description"
+        />
+      </div>
+
+      <div *ngIf="currentTache.published == 'pending'" class="form-group">
+        <label><strong>Status:</strong></label>
+        En Attente
+      </div>
+
+
+      <div *ngIf="currentTache.published == 'done'" class="form-group">
+        <label><strong>Status:</strong></label>
+        Terminée
+      </div>
+
+
+      <div *ngIf="currentTache.published == 'undefined'" class="form-group">
+        <label><strong>Status:</strong></label>
+        Non défini
+      </div>
+
+      <div *ngIf="currentTache.published == 'undergoing'" class="form-group">
+        <label><strong>Status:</strong></label>
+        En cours
+      </div>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentTache.published"
+      (click)="updatePublished('undefined')">Indéfini</button>
+
+      <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentTache.published"
+      (click)="updatePublished('done')">Terminée</button>
+
+  <button
+  class="badge badge-primary mr-2"
+  (click)="updatePublished('pending')"
+>
+  En Attente
+</button>
+
+  <button
+    class="badge badge-primary mr-2"
+    (click)="updatePublished('undergoing')"
+  >
+    En cours
+  </button>
+
+  <button class="badge badge-danger mr-2" (click)="deleteTache()">
+    Supprimer
+  </button>
+
+    </form>
+    
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateTache()"
+    >
+      Mettre à Jour
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentTache.id">
+    <br />
+    <p>On ne peut pas accéder à cette tache...</p>
+  </div>
+</ng-template>
